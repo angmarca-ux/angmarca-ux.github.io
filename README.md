@@ -1,24 +1,23 @@
-# Muestreo del movimiento de un Brazo Robótico 🤖
+# Muestreo del movimiento de un Brazo Robótico
 
-Este repositorio contiene la entrega completa del proyecto final de Métodos Numéricos.
+Este repositorio contiene la entrega del proyecto final de Métodos Numéricos enfocado en el análisis cinemático de un brazo mecánico.
 
-## 📄 Contenido del Proyecto
-* **[Clic aquí para ver el Informe Técnico (PDF)](./Informe_Brazo_Robotico.pdf)**
-* **Código de Adquisición de Datos:** [Ver código de Arduino](./codigo_arduino.ino)
-* **Código de Procesamiento Matemático:** [Ver código de Octave](./programa_octave.m)
+## Contenido del Proyecto
+* **[Informe Técnico (PDF)](./Informe_Brazo_Robotico.pdf)**
+* **Código de Adquisición de Datos:** [ProyectoMétodos.ino](./ProyectoMétodos.ino)
+* **Código de Procesamiento:** [programa.m](./programa.m)
+* **Datos Registrados:** [datos.txt](./datos.txt)
+* **Evidencia en Video:** [Proyecto Métodos 2.mp4](./Proyecto%20Métodos%202.mp4)
 
-## 🎥 Video de Demostración
-> [!TIP]
-> Si subiste el video a YouTube o Drive, pega el enlace aquí:
-> * [Ver video de prueba en YouTube/Drive](PEGA_AQUÍ_TU_LINK)
->
-> *(Nota: Si lograste subir el video directo a GitHub, ponlo así: [Ver video de prueba](./video_demostracion.mp4))*
+## Resumen del Proyecto
 
-## 📊 Métodos Numéricos Aplicados
-1. **Diferenciación Numérica (Diferencias Finitas Centrales):** Utilizado para calcular el perfil de velocidad lineal tridimensional a partir de las coordenadas de posición del brazo.
-2. **Integración Numérica (Regla del Trapecio Compuesto):** Aplicado sobre el perfil de velocidades calculadas para obtener la distancia total exacta recorrida por el brazo.
+El proyecto inició con la adquisición de datos espaciales $(X, Y, Z)$ del movimiento de un brazo mecánico mediante un Arduino, capturando muestras cada 0.5 segundos. Para mitigar el ruido eléctrico de los sensores y los errores de lectura cuando el mecanismo estaba estático, se realizó una depuración matricial en limpio. Esto permitió aislar únicamente las coordenadas dinámicas donde existía un desplazamiento físico real, evitando que la distancia calculada se inflara artificialmente.
+
+Con la lista de datos limpia, se implementó el análisis cinemático en MATLAB/Octave. Primero, se aplicó el método de **Diferencias Finitas Centrales** para calcular las velocidades instantáneas en cada eje y determinar la magnitud de la velocidad lineal total del brazo. Posteriormente, se utilizó la **Regla del Trapecio Compuesto** para integrar numéricamente el perfil de velocidades, calculando de forma exacta la distancia real recorrida bajo el área de la curva.
+
+Finalmente, los resultados se estructuraron de forma visual mediante gráficas compuestas por una trayectoria tridimensional en el espacio 3D y un perfil temporal de velocidad que evidencia las aceleraciones y desaceleraciones del sistema. Toda la arquitectura del proyecto fue cargada y organizada en este repositorio público de GitHub, garantizando un control de versiones limpio y una presentación formal para la evaluación académica.
 
 ---
-**Estudiante:** [Huaman Marca Angel Joel]  
+**Estudiante:** Huaman Marca Angel Joel  
 **Curso:** Métodos Numéricos  
 **Año:** 2026
