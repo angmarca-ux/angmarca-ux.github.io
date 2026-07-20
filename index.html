@@ -3,212 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Métodos Numéricos</title>
+    <title>Proyecto Metodos Numericos - Brazo Robotico</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 30px auto; padding: 0 20px; color: #333; background-color: #f4f6f9; }
-        h1, h2, h3 { color: #0056b3; }
-        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .btn { display: inline-block; background: #007bff; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: bold; border: none; cursor: pointer; margin: 5px 2px; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+        h1 { color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; }
+        .btn { display: inline-block; background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 5px 0; font-weight: bold; }
         .btn:hover { background: #0056b3; }
-        .btn-sec { background: #6c757d; }
-        input[type="file"], input[type="number"], input[type="text"] { padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-        th { background-color: #0056b3; color: white; }
-        .results { background: #e9f5ff; border-left: 4px solid #0056b3; padding: 15px; margin-top: 15px; }
+        .box { background: #f8f9fa; border-left: 5px solid #28a745; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
     </style>
 </head>
 <body>
 
-    <h1>Plataforma Interactiva de Métodos Numéricos</h1>
-    <p>Herramienta web para procesamiento de datos experimentales, interpolación, diferenciación, integración y resolución de EDOs.</p>
+    <h1>Muestreo del movimiento de un Brazo Robotico</h1>
+    <p>Proyecto final de la asignatura de Metodos Numericos enfocado en el analisis cinematico y procesamiento geometrico tridimensional de un prototipo robotico.</p>
 
-    <!-- SECCIÓN DE RECURSOS DEL PROYECTO -->
-    <div class="card">
-        <h2>Entregables del Proyecto (Brazo Robótico)</h2>
-        <a href="./Informe_Brazo_Robotico.pdf" class="btn" target="_blank">Informe Técnico (PDF)</a>
-        <a href="./programa.m" class="btn btn-sec">Código MATLAB (.m)</a>
-        <a href="./ProyectoMétodos.ino" class="btn btn-sec">Código Arduino (.ino)</a>
-        <a href="./datos.txt" class="btn btn-sec">Datos de Prueba (.txt)</a>
-        <a href="https://octave-online.net/bucket~6V1HZPYh8p5mumfxwjeVTc" class="btn btn-sec" target="_blank">Octave Online</a>
-        <a href="https://drive.google.com/drive/folders/1fXelvq_brmn12St7A6OyATKwOoAGKStk?usp=drive_link" class="btn btn-sec" target="_blank">Carpeta Drive</a>
+    <h2>Entregables del Proyecto</h2>
+    <p>Enlaces directos para acceder a la documentacion tecnica y recursos cargados en el repositorio:</p>
+    
+    <a href="./Informe_Brazo_Robotico.pdf" class="btn" target="_blank">Ver Informe Tecnico (PDF)</a><br>
+    <a href="./programa.m" class="btn" style="background:#6c757d;">Ver Codigo MATLAB / Octave (.m)</a><br>
+    <a href="./ProyectoMetodos.ino" class="btn" style="background:#17a2b8;">Ver Codigo Arduino (.ino)</a><br>
+    <a href="./datos.txt" class="btn" style="background:#ffc107; color:#333;">Archivo de Datos (.txt)</a><br>
+    
+    <a href="https://octave-online.net/bucket~6V1HZPYh8p5mumfxwjeVTc" class="btn" style="background:#28a745;" target="_blank">Ejemplo del Script en Octave Online</a><br>
+    <a href="https://drive.google.com/drive/folders/1fXelvq_brmn12St7A6OyATKwOoAGKStk?usp=drive_link" class="btn" style="background:#dc3545;" target="_blank">Carpeta de Videos en Google Drive</a>
+
+    <h2>Video de Demostracion</h2>
+    <p>Evidencia audiovisual del correcto funcionamiento y muestreo del brazo mecanico:</p>
+    <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <source src="./Proyecto Métodos 2.mp4" type="video/mp4">
+        El navegador no soporta la reproduccion de video.
+    </video>
+
+    <h2>Resumen Metodologico</h2>
+    <div class="box">
+        <strong>1. Diferenciacion Numerica:</strong> Se utilizo el algoritmo de Diferencias Finitas Centrales para procesar vectorialmente las coordenadas espaciales obtenidas en intervalos de 0.5 segundos, derivando el perfil de velocidad lineal total del mecanismo.<br><br>
+        <strong>2. Integracion Numerica:</strong> Se aplico la Regla del Trapecio Compuesto sobre la curva de velocidades para calcular con precision matematica la distancia real recorrida por el prototipo, filtrando previamente los errores generados por ruido estatico.
     </div>
 
-    <!-- MÓDULO INTERACTIVO DE MÉTODOS NUMÉRICOS -->
-    <div class="card">
-        <h2>Módulo de Cálculo Numérico</h2>
-        <p>Selecciona la pestaña o método que deseas ejecutar:</p>
-        
-        <label><strong>1. Cargar datos de prueba (Archivo TXT o CSV):</strong></label><br>
-        <input type="file" id="fileInput" accept=".txt, .csv"><br><br>
+    <footer>
+        <strong>Estudiante:</strong> Huaman Marca Angel Joel<br>
+        <strong>Curso:</strong> Metodos Numericos | 2026
+    </footer>
 
-        <label><strong>O ingresa datos manualmente (Valores X e Y separados por coma):</strong></label><br>
-        <input type="text" id="manualX" placeholder="Ej: 0, 0.5, 1.0, 1.5, 2.0" style="width: 45%;">
-        <input type="text" id="manualY" placeholder="Ej: 0, 2.5, 5.0, 7.5, 10.0" style="width: 45%;"><br>
-        <button class="btn" onclick="cargarDatosManuales()">Cargar Datos Manuales</button>
-
-        <hr>
-
-        <h3>Operaciones Disponibles</h3>
-        <button class="btn" onclick="calcularInterpolacion()">1. Interpolación (Lagrange)</button>
-        <button class="btn" onclick="calcularDerivadas()">2. Derivación (Diferencias Finitas)</button>
-        <button class="btn" onclick="calcularIntegracion()">3. Integración (Trapecio Compuesto)</button>
-        <button class="btn" onclick="mostrarSeccionRK4()">4. EDO (Runge-Kutta 4to Orden)</button>
-
-        <!-- SUB-SECCIÓN PARA RK4 -->
-        <div id="rk4Section" style="display:none; margin-top:15px; background:#f8f9fa; padding:10px; border-radius:5px;">
-            <h4>Parámetros para RK4 (dy/dx = f(x,y))</h4>
-            <label>Ecuación f(x,y) en JS (ej. <code>x + y</code> o <code>x*x - y</code>):</label><br>
-            <input type="text" id="rk4Eq" value="x - y"><br>
-            <label>x0:</label> <input type="number" id="rk4x0" value="0" step="any">
-            <label>y0:</label> <input type="number" id="rk4y0" value="1" step="any"><br>
-            <label>xf (x final):</label> <input type="number" id="rk4xf" value="2" step="any">
-            <label>Paso h:</label> <input type="number" id="rk4h" value="0.2" step="any"><br>
-            <button class="btn" onclick="ejecutarRK4()">Calcular RK4</button>
-        </div>
-
-        <!-- ÁREA DE RESULTADOS -->
-        <div id="outputArea" class="results" style="display:none;">
-            <h3 id="resultTitle">Resultados</h3>
-            <div id="resultContent"></div>
-        </div>
-    </div>
-
-    <script>
-        let dataX = [];
-        let dataY = [];
-
-        // Leer archivo TXT / CSV
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            let file = e.target.files[0];
-            if (!file) return;
-            let reader = new FileReader();
-            reader.onload = function(e) {
-                let lines = e.target.result.trim().split('\n');
-                dataX = []; dataY = [];
-                lines.forEach(line => {
-                    let parts = line.trim().split(/[\s,\t]+/);
-                    if (parts.length >= 2) {
-                        let x = parseFloat(parts[0]);
-                        let y = parseFloat(parts[1]);
-                        if (!isNaN(x) && !isNaN(y)) {
-                            dataX.push(x);
-                            dataY.push(y);
-                        }
-                    }
-                });
-                alert('Datos cargados correctamente: ' + dataX.length + ' puntos.');
-            };
-            reader.readAsText(file);
-        });
-
-        function cargarDatosManuales() {
-            let xStr = document.getElementById('manualX').value.split(',');
-            let yStr = document.getElementById('manualY').value.split(',');
-            dataX = xStr.map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
-            dataY = yStr.map(v => parseFloat(v.trim())).filter(v => !isNaN(v));
-            if(dataX.length !== dataY.length || dataX.length === 0) {
-                alert('Asegúrate de ingresar la misma cantidad de valores numéricos en X e Y.');
-            } else {
-                alert('Datos manuales cargados: ' + dataX.length + ' puntos.');
-            }
-        }
-
-        // 1. Interpolación de Lagrange
-        function calcularInterpolacion() {
-            if (dataX.length < 2) return alert('Carga al menos 2 puntos de datos primero.');
-            let val = prompt('Ingresa el valor de X a interpolar:', dataX[0]);
-            let xTarget = parseFloat(val);
-            if (isNaN(xTarget)) return;
-
-            let n = dataX.length;
-            let yTarget = 0;
-            for (let i = 0; i < n; i++) {
-                let term = dataY[i];
-                for (let j = 0; j < n; j++) {
-                    if (i !== j) {
-                        term *= (xTarget - dataX[j]) / (dataX[i] - dataX[j]);
-                    }
-                }
-                yTarget += term;
-            }
-
-            mostrarResultado('Interpolación de Lagrange', `<p>Para <strong>X = ${xTarget}</strong>, el valor interpolado es <strong>Y = ${yTarget.toFixed(6)}</strong>.</p>`);
-        }
-
-        // 2. Diferenciación Numérica
-        function calcularDerivadas() {
-            if (dataX.length < 3) return alert('Carga al menos 3 puntos para derivar.');
-            let h = dataX[1] - dataX[0];
-            let n = dataX.length;
-            let dy = new Array(n);
-
-            // Diferencias centrales e infinitas laterales
-            dy[0] = (dataY[1] - dataY[0]) / h;
-            for (let i = 1; i < n - 1; i++) {
-                dy[i] = (dataY[i+1] - dataY[i-1]) / (2 * h);
-            }
-            dy[n-1] = (dataY[n-1] - dataY[n-2]) / h;
-
-            let html = '<table><tr><th>X</th><th>Y</th><th>dy/dx (Derivada)</th></tr>';
-            for (let i = 0; i < n; i++) {
-                html += `<tr><td>${dataX[i]}</td><td>${dataY[i]}</td><td>${dy[i].toFixed(6)}</td></tr>`;
-            }
-            html += '</table>';
-            mostrarResultado('Diferenciación Numérica (Diferencias Finitas)', html);
-        }
-
-        // 3. Integración Numérica (Trapecio Compuesto)
-        function calcularIntegracion() {
-            if (dataX.length < 2) return alert('Carga al menos 2 puntos para integrar.');
-            let h = dataX[1] - dataX[0];
-            let n = dataX.length;
-            let sum = dataY[0] + dataY[n-1];
-            for (let i = 1; i < n - 1; i++) {
-                sum += 2 * dataY[i];
-            }
-            let area = (h / 2) * sum;
-            mostrarResultado('Integración Numérica (Regla del Trapecio)', `<p>El área total calculada bajo la curva es: <strong>${area.toFixed(6)}</strong></p>`);
-        }
-
-        // 4. Runge-Kutta 4to Orden
-        function mostrarSeccionRK4() {
-            document.getElementById('rk4Section').style.display = 'block';
-        }
-
-        function ejecutarRK4() {
-            let eqStr = document.getElementById('rk4Eq').value;
-            let x0 = parseFloat(document.getElementById('rk4x0').value);
-            let y0 = parseFloat(document.getElementById('rk4y0').value);
-            let xf = parseFloat(document.getElementById('rk4xf').value);
-            let h = parseFloat(document.getElementById('rk4h').value);
-
-            let f = new Function('x', 'y', `return ${eqStr};`);
-
-            let x = x0;
-            let y = y0;
-            let html = '<table><tr><th>x</th><th>y (RK4)</th></tr>';
-            html += `<tr><td>${x.toFixed(4)}</td><td>${y.toFixed(6)}</td></tr>`;
-
-            while (x < xf) {
-                let k1 = f(x, y);
-                let k2 = f(x + 0.5*h, y + 0.5*h*k1);
-                let k3 = f(x + 0.5*h, y + 0.5*h*k2);
-                let k4 = f(x + h, y + h*k3);
-
-                y = y + (h/6) * (k1 + 2*k2 + 2*k3 + k4);
-                x = x + h;
-                html += `<tr><td>${x.toFixed(4)}</td><td>${y.toFixed(6)}</td></tr>`;
-            }
-            html += '</table>';
-            mostrarResultado(`Runge-Kutta 4to Orden para dy/dx = ${eqStr}`, html);
-        }
-
-        function mostrarResultado(titulo, contenido) {
-            document.getElementById('outputArea').style.display = 'block';
-            document.getElementById('resultTitle').innerText = titulo;
-            document.getElementById('resultContent').innerHTML = contenido;
-        }
-    </script>
 </body>
 </html>
